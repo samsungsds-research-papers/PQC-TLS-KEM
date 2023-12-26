@@ -1,5 +1,5 @@
 # PQC-TLS-KEM
-Apply PQC-KEM to BounceyCastle java (v1.76) TLSv1.3 module
+PQC-KEM to BounceyCastle java (v1.76) TLSv1.3 module
 
 ### Introduction
 | 제목 | PQC-TLS (KEM) |
