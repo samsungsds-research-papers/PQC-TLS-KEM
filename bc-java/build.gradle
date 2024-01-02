@@ -1,0 +1,93 @@
+buildscript {
+  repositories {
+    maven {
+        url "http://nexus.sdsdev.co.kr:8081/repository/maven-central/"
+        allowInsecureProtocol true
+    }    
+  }
+}
+
+allprojects {
+  apply plugin: 'java'
+}
+
+subprojects {
+  tasks.withType(Javadoc).all { 
+    enabled = false 
+  } // non ascii characters make it crash
+}
+
+
+allprojects {
+
+  repositories {
+    maven {
+        url "http://nexus.sdsdev.co.kr:8081/repository/maven-central/"
+        allowInsecureProtocol true
+    }
+    flatDir {
+        dirs 'libs'
+    }       
+  }
+
+  dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.11'
+  }
+
+}
+
+ext {
+  bcTestDataHome = file('core/src/test/data').absolutePath
+}
+task printProperties {
+  doLast {
+    println bcTestDataHome
+  }
+}
+
+subprojects {
+  compileJava.options.encoding = 'UTF-8'
+  tasks.withType(JavaCompile){
+    options.encoding = 'UTF-8'
+  }
+
+  if (JavaVersion.current().compareTo(JavaVersion.VERSION_1_8) <= 0)
+  {
+    ext.vmrange = 'jdk15to18'
+    sourceCompatibility = 1.5
+    targetCompatibility = 1.5
+  }
+  else
+  {
+    ext.vmrange = 'jdk18on'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+  }
+
+ task testFull(type:Test) {
+    systemProperties = [
+            'bc.test.data.home': bcTestDataHome,
+            'test.full':'true'
+    ]
+    systemProperty 'bc.test.data.home', bcTestDataHome
+    maxHeapSize = "1536m"
+
+    filter {
+      includeTestsMatching "AllTest*"
+    }
+  }
+  test {
+    systemProperty 'bc.test.data.home', bcTestDataHome
+    maxHeapSize = "1536m"
+    testLogging.showStandardStreams = true
+
+    filter {
+      includeTestsMatching "AllTest*"
+    }
+  }
+
+  dependencies {
+  }
+}
+
+test.dependsOn([':core:test', ':prov:test', ':pkix:test', ':mail:test', 'pg:test', ':tls:test'])
