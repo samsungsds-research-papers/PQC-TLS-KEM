@@ -79,5 +79,5 @@ javac -cp ${classpath} TestServer.java
 
 #### Step 2 : Run java application with jdk.tls.namedGroups option
 ```
-java -jar -Djdk.tls.namedGroups=secp384Kyber768 TestServer.jar
+java -jar -Djdk.tls.namedGroups=x25519Kyber768 TestServer.jar
 ```
