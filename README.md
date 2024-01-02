@@ -72,7 +72,7 @@ security.provider.15=SunPKCS11
 
 #### Step 1 : Set the classpath / build java application
 ```
-classpath=${bc-java}/pkix/build/libs/bcpkix-jdk18on-172.jar:${bc-java}/tls/build/libs/bctls-jdk18on-172-pqc.jar:${bc-java}/core/build/libs/core-172-pqc.jar:${bc-java}/prov/build/libs/bcprov-jdk18on-172.jar:${bc-java}/util/build/libs/bcutil-jdk18on-172.jar
+classpath=${bc-java}/pkix/build/libs/bcpkix-jdk18on-175.jar:${bc-java}/tls/build/libs/bctls-jdk18on-175.jar:${bc-java}/core/build/libs/core-175.jar:${bc-java}/prov/build/libs/bcprov-jdk18on-175.jar:${bc-java}/util/build/libs/bcutil-jdk18on-175.jar
 
 javac -cp ${classpath} TestServer.java
 ```
