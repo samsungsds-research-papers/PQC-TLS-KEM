@@ -1,5 +1,5 @@
 # S-PQC-TLS
-PQC-KEM to BounceyCastle java (v1.76) TLSv1.3 module
+PQC-KEM to BouncyCastle java (v1.76) TLSv1.3 module
 
 ### Introduction
 | 제목 | S-PQC-TLS |
