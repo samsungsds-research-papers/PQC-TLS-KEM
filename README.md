@@ -26,7 +26,7 @@ PQC-KEM to BouncyCastle java (v1.76) TLSv1.3 module
 
 ### Running
 #### Step 0 : Insert security provider
-- into the code
+- case1 : into the code
 ```
 Security.insertProviderAt(new BouncyCastleProvider(), 1);
 Security.insertProviderAt(new BouncyCastleJsseProvider(), 2);		
@@ -34,7 +34,7 @@ Security.setProperty("ssl.KeyManagerFactory.algorithm", "PKIX");
 Security.setProperty("ssl.TrustManagerFactory.algorithm", "PKIX");
 ```
 
-- into the java.security file
+- case2 : into the java.security file
 ```
 #
 # List of providers and their preference orders (see above):
