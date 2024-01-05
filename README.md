@@ -1,5 +1,5 @@
 # S-PQC-TLS
-PQC-KEM to BouncyCastle java (v1.76) TLSv1.3 module
+PQC-KEM to BouncyCastle java (v1.76) TLS v1.3 module
 
 
 - [Status](#status)
