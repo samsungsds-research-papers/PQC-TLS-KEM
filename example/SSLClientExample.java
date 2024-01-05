@@ -20,7 +20,7 @@ public class SSLClientExample {
     private static String TEST_MESSAGE = "";
     private static String TEST_SERVER_HOST = "127.0.0.1";
     private static int TEST_SERVER_PORT = 8001;
-    private static int TEST_COUNT = 100;
+    private static int TEST_COUNT = 1000;
 
     public static void main(String[] args) throws Exception {
 
