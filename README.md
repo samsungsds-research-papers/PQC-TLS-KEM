@@ -22,7 +22,7 @@ PQC-KEM to BouncyCastle java (v1.76) TLSv1.3 module
 
 ## Quickstart
 ### Building
-#### build bc-java with gradle (or ant)
+#### build bc-java with ant (or gradle)
 
 ### Running
 #### Step 0 : Insert security provider
@@ -72,12 +72,17 @@ security.provider.15=SunPKCS11
 
 #### Step 1 : Set the classpath / build java application
 ```
-classpath=${bc-java}/pkix/build/libs/bcpkix-jdk18on-175.jar:${bc-java}/tls/build/libs/bctls-jdk18on-175.jar:${bc-java}/core/build/libs/core-175.jar:${bc-java}/prov/build/libs/bcprov-jdk18on-175.jar:${bc-java}/util/build/libs/bcutil-jdk18on-175.jar
-
-javac -cp ${classpath} TestServer.java
+classpath=./libs/bcpkix-jdk18on-177b05.jar:./libs/bctls-jdk18on-177b05.jar:./libs/bcprov-jdk18on-177b05.jar:./libs/bcutil-jdk18on-177b05.jar
+javac -cp ${classpath} SSLServerExample.java
+javac -cp ${classpath} SSLClientExample.java
 ```
 
-#### Step 2 : Run java application with jdk.tls.namedGroups option
+#### Step 2 : Run server application with jdk.tls.namedGroups option
 ```
-java -jar -Djdk.tls.namedGroups=x25519Kyber768 TestServer.jar
+java -jar -Djdk.tls.namedGroups=secp256r1,kyber512,secp256Kyber512,x25519Kyber768,x448Kyber768 -cp ./libs/* SSLServerExample.jar
+```
+
+#### Step 3 : Run client application with jdk.tls.namedGroups option
+```
+java -jar -Djdk.tls.namedGroups=x25519Kyber768 -cp ./libs/* SSLClientExample.jar
 ```
