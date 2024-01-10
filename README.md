@@ -1,4 +1,4 @@
-# S-PQC-TLS
+# S-PQC-TLS (Samsung SDS PQC-TLS)
 PQC-KEM to BouncyCastle java (v1.76) TLS v1.3 module
 
 
